@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/NodeApp.iml" filepath="$PROJECT_DIR$/.idea/NodeApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NodeApp_Back-end/content-center/content-center.iml" filepath="$PROJECT_DIR$/NodeApp_Back-end/content-center/content-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NodeApp_Back-end/dependencies/dependencies.iml" filepath="$PROJECT_DIR$/NodeApp_Back-end/dependencies/dependencies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NodeApp_Back-end/parent.iml" filepath="$PROJECT_DIR$/NodeApp_Back-end/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NodeApp_Back-end/user-center/user-center.iml" filepath="$PROJECT_DIR$/NodeApp_Back-end/user-center/user-center.iml" />
+    </modules>
+  </component>
+</project>
