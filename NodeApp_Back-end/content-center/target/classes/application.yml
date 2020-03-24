@@ -9,3 +9,9 @@ spring:
       username: root
       password: wen175924
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: content-center
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

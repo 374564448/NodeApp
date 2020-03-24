@@ -4,6 +4,7 @@ import com.banmingi.nodeapp.contentcenter.dao.ShareMapper;
 import com.banmingi.nodeapp.contentcenter.domain.dto.ShareDTO;
 import com.banmingi.nodeapp.contentcenter.domain.dto.UserDTO;
 import com.banmingi.nodeapp.contentcenter.domain.entity.Share;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  * @auther 半命i 2020/3/22
  * @description
  */
+@Slf4j
 @Service
 public class ShareService {
     @Resource
@@ -32,8 +34,10 @@ public class ShareService {
         Share share = this.shareMapper.selectByPrimaryKey(id);
         //发布人id
         Integer userId = share.getUserId();
+
         UserDTO userDTO =
-                this.restTemplate.getForObject("http://localhost:8010/users/{id}", UserDTO.class,userId);
+                this.restTemplate.getForObject("http://user-center/users/{userId}", UserDTO.class,userId);
+
         //消息的装配
         ShareDTO shareDTO = new ShareDTO();
         BeanUtils.copyProperties(share,shareDTO);

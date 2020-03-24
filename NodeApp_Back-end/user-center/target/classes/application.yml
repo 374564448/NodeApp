@@ -1,6 +1,6 @@
 
 server:
-  port: 8010
+  port: 8011
 
 spring:
   datasource:
@@ -9,3 +9,17 @@ spring:
       username: root
       password: wen175924
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: user-center
+  cloud:
+    nacos:
+      discovery:
+        # 地址
+        server-addr: localhost:8848
+        # 命名空间
+        # namespace: eade4058-37c6-4a86-97ca-80413a7af66e
+        # 集群名称
+        # cluster-name: user-center-cluster
+        # 元数据   k-v
+        metadata:
+          instance: c
