@@ -15,3 +15,17 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        cluster-name: BJ
+        metadata:
+          k: v
+
+# 局部配置ribbon的一种方式
+#user-center:
+#  ribbon:
+#    NFLoadBalancerRuleClassNameom: com.netflix.loadbalancer.RandomRule
+ribbon:
+  eager-load:
+    #饥饿加载
+    enabled: true
+    clients: user-center
+

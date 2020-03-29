@@ -1,6 +1,6 @@
 
 server:
-  port: 8011
+  port: 8010
 
 spring:
   datasource:
@@ -19,7 +19,7 @@ spring:
         # 命名空间
         # namespace: eade4058-37c6-4a86-97ca-80413a7af66e
         # 集群名称
-        # cluster-name: user-center-cluster
+        cluster-name: NJ
         # 元数据   k-v
-        metadata:
-          instance: c
+        # metadata:
+        #  instance: c

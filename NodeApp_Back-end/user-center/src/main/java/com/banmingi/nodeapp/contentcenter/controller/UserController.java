@@ -22,6 +22,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findById(@PathVariable Integer id) {
+        System.out.println("我被请求了");
         return this.userService.findById(id);
     }
 }
