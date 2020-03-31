@@ -50,6 +50,10 @@
 
         <!-- spring cloud alibaba -->
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
@@ -104,7 +108,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.banmingi.nodeapp.contentcenter.UserCenterApplication</mainClass>
+                    <mainClass>com.banmingi.nodeapp.usercenter.UserCenterApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

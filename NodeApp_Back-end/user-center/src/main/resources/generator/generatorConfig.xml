@@ -22,13 +22,13 @@
         </jdbcConnection>
 
         <!-- 实体-->
-        <javaModelGenerator targetPackage="com.banmingi.nodeapp.contentcenter.domain.entity.${moduleName}"
+        <javaModelGenerator targetPackage="com.banmingi.nodeapp.usercenter.domain.entity.${moduleName}"
                             targetProject="src/main/java"/>
         <!-- mapper.xml -->
-        <sqlMapGenerator targetPackage="com.banmingi.nodeapp.contentcenter.dao.${moduleName}"
+        <sqlMapGenerator targetPackage="com.banmingi.nodeapp.usercenter.dao.${moduleName}"
                          targetProject="src/main/resources"/>
         <!-- mapper接口-->
-        <javaClientGenerator targetPackage="com.banmingi.nodeapp.contentcenter.dao.${moduleName}"
+        <javaClientGenerator targetPackage="com.banmingi.nodeapp.usercenter.dao.${moduleName}"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
         <!-- 为哪张表生成上面的三类代码-->
