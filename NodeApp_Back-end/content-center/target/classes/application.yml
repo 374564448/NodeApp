@@ -3,6 +3,8 @@ server:
   port: 8020
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://localhost:3306/content_center?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     hikari:
@@ -15,9 +17,16 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-        # cluster-name: BJ
+        # cluster-name: BJ2
         metadata:
           k: v
+    sentinel:
+      filter:
+        # 打开/关闭 对SpringMVC端点的保护
+        enabled: true
+      transport:
+        # 指定sentinel控制台的地址
+        dashboard: localhost:8080
 
 # 局部配置ribbon的一种方式
 #user-center:
@@ -29,3 +38,36 @@ ribbon:
     enabled: true
     clients: user-center
 
+logging:
+  level:
+    com.banmingi.nodeapp.contentcenter.feignclient.UserCenterFeignClient: debug
+#feign:
+#  client:
+#    config:
+#      #想要调用的微服务的名称
+#      user-center:
+#        loggerLevel: FULL
+feign:
+  client:
+    config:
+      #全局配置
+      default:
+        loggerLevel: BASIC
+   # 为feign整合sentinel
+  sentinel:
+    enabled: true
+
+  # 让feign使用 apache 的httpclient做请求,而不是默认的 urlconnection
+  httpclient:
+    enabled: true
+    # feign 最大连接数
+    max-connections: 200
+    # feign 单个路径的最大连接数
+    max-connections-per-route: 50
+
+# 公开所有 actuator (已启用)网络端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,14 +1,10 @@
 package com.banmingi.nodeapp.usercenter.test;
 
-import com.banmingi.nodeapp.contentcenter.dao.ShareMapper;
-import com.banmingi.nodeapp.contentcenter.domain.entity.Share;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
-import java.util.Date;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @auther 半命i 2020/3/22
@@ -18,21 +14,14 @@ import java.util.Date;
 @SpringBootTest
 public class ContentCenterTest {
 
-    @Resource
-    private ShareMapper shareMapper;
 
     @Test
-    public void testInsert() {
-
-        Share share = new Share();
-        share.setUserId(1);
-        share.setTitle("xxx");
-        share.setCreateTime(new Date());
-        share.setUpdateTime(new Date());
-        share.setCover("xxx");
-        share.setBuyCount(2);
-
-        this.shareMapper.insertSelective(share);
-
+    public void SentinelTest() throws InterruptedException {
+        RestTemplate restTemplate = new RestTemplate();
+        for (int i = 0; i < 10000; i++) {
+            String object =
+                    restTemplate.getForObject("http://localhost:8020/actuator/sentinel", String.class);
+            Thread.sleep(500);
+        }
     }
 }

@@ -2,14 +2,13 @@ package com.banmingi.nodeapp.contentcenter.service;
 
 import com.banmingi.nodeapp.contentcenter.dao.ShareMapper;
 import com.banmingi.nodeapp.contentcenter.domain.dto.ShareDTO;
+import com.banmingi.nodeapp.contentcenter.domain.dto.UserDTO;
 import com.banmingi.nodeapp.contentcenter.domain.entity.Share;
-import com.banmingi.nodeapp.usercenter.domain.entity.User;
-import com.banmingi.nodeapp.usercenter.feign.UserFeign;
+import com.banmingi.nodeapp.contentcenter.feignclient.UserCenterFeignClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 
@@ -23,9 +22,8 @@ public class ShareService {
     @Resource
     private ShareMapper shareMapper;
     @Autowired
-    private RestTemplate restTemplate;
-    @Resource
-    private UserFeign userFeign;
+    private UserCenterFeignClient userCenterFeignClient;
+
 
     /**
      *根据id查询详情
@@ -38,15 +36,13 @@ public class ShareService {
         //发布人id
         Integer userId = share.getUserId();
 
-        //UserDTO userDTO =
-        //        this.restTemplate.getForObject("http://user-center/users/{userId}", UserDTO.class,userId);
+        UserDTO userDTO = this.userCenterFeignClient.findById(userId);
 
-        User user = userFeign.findById(userId);
 
         //消息的装配
         ShareDTO shareDTO = new ShareDTO();
         BeanUtils.copyProperties(share,shareDTO);
-        shareDTO.setWxNickname(user.getWxNickname());
+        shareDTO.setWxNickname(userDTO.getWxNickname());
 
         return shareDTO;
 
