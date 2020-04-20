@@ -14,6 +14,23 @@ spring:
   application:
     name: content-center
   cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
+        bindings:
+          output:
+            producer:
+              transactional: true
+              # @RocketMQTransactionListener(txProducerGroup = "tx-add-bonus-group") 相一致
+              group: tx-add-bonus-group
+      bindings:
+        output:
+          #用来指定 topic
+          destination:
+            add-bonus
+          # stream-test-topic
+
     nacos:
       discovery:
         server-addr: localhost:8848
@@ -27,6 +44,7 @@ spring:
       transport:
         # 指定sentinel控制台的地址
         dashboard: localhost:8080
+
 
 # 局部配置ribbon的一种方式
 #user-center:
@@ -71,3 +89,15 @@ management:
     web:
       exposure:
         include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+    # 小坑：必须制定group
+#    group: test-group
+
+

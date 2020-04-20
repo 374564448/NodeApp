@@ -12,6 +12,22 @@ spring:
       password: wen175924
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
+      bindings:
+        input:
+          # topic 和 生产者的一样
+          destination:
+            add-bonus
+          #stream-test-topic
+
+          # 组,随便设置即可
+          # 如果使用 RocketMQ 就一定要设置
+          # 其他 MQ可留空
+          group: binder-group
+
     nacos:
       discovery:
         # 地址
@@ -23,3 +39,8 @@ spring:
         # 元数据   k-v
         # metadata:
         #  instance: c
+
+
+#rocketmq:
+  #name-server: 127.0.0.1:9876
+
