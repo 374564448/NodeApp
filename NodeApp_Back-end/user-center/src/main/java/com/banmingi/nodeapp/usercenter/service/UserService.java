@@ -33,6 +33,10 @@ public class UserService {
         return this.userMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * 加积分、记录日志
+     * @param message
+     */
     @Transactional(rollbackFor = Exception.class)
     public void addBonus(UserAddBonusMsgDTO message) {
         //1. 为用户加积分

@@ -21,6 +21,7 @@ spring:
         bindings:
           output:
             producer:
+              # 开启支持本地事务
               transactional: true
               # @RocketMQTransactionListener(txProducerGroup = "tx-add-bonus-group") 相一致
               group: tx-add-bonus-group
@@ -35,8 +36,8 @@ spring:
       discovery:
         server-addr: localhost:8848
         # cluster-name: BJ2
-        metadata:
-          k: v
+        #metadata:
+          #k: v
     sentinel:
       filter:
         # 打开/关闭 对SpringMVC端点的保护
@@ -97,7 +98,7 @@ management:
 #rocketmq:
 #  name-server: 127.0.0.1:9876
 #  producer:
-    # 小坑：必须制定group
+#     小坑：必须制定group
 #    group: test-group
 
 

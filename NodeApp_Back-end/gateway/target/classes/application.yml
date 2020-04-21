@@ -1,0 +1,37 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #让gateway从服务发现组件上面找到其他微服务
+          enabled: true
+      routes:
+        - id: between_router
+          uri: lb://user-center
+          predicates:
+            - TimeBetween=上午9:00,下午11:00
+          filters:
+            - PreLog=a,b
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: gateway
+
+
+# 暴露所有 actuator 端点
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    # 健康检查展示详情
+  endpoint:
+    health:
+      show-details: always
