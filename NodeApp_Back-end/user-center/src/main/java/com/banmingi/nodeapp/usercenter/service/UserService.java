@@ -3,6 +3,7 @@ package com.banmingi.nodeapp.usercenter.service;
 import com.banmingi.nodeapp.usercenter.dao.BonusEventLogMapper;
 import com.banmingi.nodeapp.usercenter.dao.UserMapper;
 import com.banmingi.nodeapp.usercenter.domain.dto.UserAddBonusMsgDTO;
+import com.banmingi.nodeapp.usercenter.domain.dto.UserLoginDTO;
 import com.banmingi.nodeapp.usercenter.domain.entity.BonusEventLog;
 import com.banmingi.nodeapp.usercenter.domain.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -56,4 +57,31 @@ public class UserService {
                         .build());
         log.info("积分添加完毕");
     }
+
+    /**
+     * 登录
+     * @return
+     */
+    public User login(UserLoginDTO loginDTO,String openId) {
+        User user = this.userMapper.selectOne(
+                User.builder().wxId(openId).build()
+        );
+        if (user == null) {
+            User userToSave = User.builder()
+                    .wxId(openId)
+                    .bonus(300)
+                    .wxNickname(loginDTO.getWxNickname())
+                    .avatarUrl(loginDTO.getAvatarUrl())
+                    .roles("user")
+                    .createTime(new Date())
+                    .updateTime(new Date())
+                    .build();
+            this.userMapper.insertSelective(
+                    userToSave
+            );
+            return userToSave;
+        }
+        return user;
+    }
+
 }

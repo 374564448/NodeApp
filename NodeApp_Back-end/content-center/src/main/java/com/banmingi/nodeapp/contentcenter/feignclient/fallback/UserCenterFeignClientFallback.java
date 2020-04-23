@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
             * @auther 半命i 2020/4/17
             * @description
  */
+
 @Component
 public class UserCenterFeignClientFallback implements UserCenterFeignClient {
     /**

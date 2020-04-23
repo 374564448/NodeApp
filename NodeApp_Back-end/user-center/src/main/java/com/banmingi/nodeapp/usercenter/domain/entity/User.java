@@ -1,15 +1,25 @@
 package com.banmingi.nodeapp.usercenter.domain.entity;
 
-import java.util.Date;
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Getter
 @Setter
 @ToString
 @Table(name = "user")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     /**
      * Id

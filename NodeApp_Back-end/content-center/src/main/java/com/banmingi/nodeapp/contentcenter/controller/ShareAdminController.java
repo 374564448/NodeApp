@@ -1,5 +1,6 @@
 package com.banmingi.nodeapp.contentcenter.controller;
 
+import com.banmingi.nodeapp.contentcenter.auth.CheckAuthorization;
 import com.banmingi.nodeapp.contentcenter.domain.dto.ShareAuditDTO;
 import com.banmingi.nodeapp.contentcenter.domain.entity.Share;
 import com.banmingi.nodeapp.contentcenter.service.ShareService;
@@ -28,9 +29,9 @@ public class ShareAdminController {
      * @return
      */
     @PutMapping("/audit/{id}")
+    @CheckAuthorization("admin")
     public Share auditById(@PathVariable(value = "id") Integer id,
                            @RequestBody ShareAuditDTO auditDTO) {
-        //TODO 认证授权
         return this.shareService.auditById(id,auditDTO);
     }
 }

@@ -1,5 +1,6 @@
 package com.banmingi.nodeapp.contentcenter.controller;
 
+import com.banmingi.nodeapp.contentcenter.auth.CheckLogin;
 import com.banmingi.nodeapp.contentcenter.domain.dto.ShareDTO;
 import com.banmingi.nodeapp.contentcenter.service.ShareService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ShareController {
      * @return
      */
     @GetMapping("/{id}")
+    @CheckLogin
     public ShareDTO findById(@PathVariable Integer id) {
         return this.shareService.findById(id);
     }

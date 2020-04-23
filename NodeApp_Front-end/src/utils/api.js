@@ -1,6 +1,6 @@
 // 后端接口基础路径
 // export const BASE_API_URL = 'https://t.itmuch.com';
-export const BASE_API_URL = 'http://127.0.0.1:8040';
+export const BASE_API_URL = 'http://127.0.0.1:9000';
 // 登录地址
 export const LOGIN_URL = BASE_API_URL + '/users/login';
 // 公告接口地址

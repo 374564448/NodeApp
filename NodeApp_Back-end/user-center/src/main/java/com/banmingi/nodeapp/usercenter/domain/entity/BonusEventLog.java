@@ -1,7 +1,9 @@
 package com.banmingi.nodeapp.usercenter.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -13,9 +15,11 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Builder
 @ToString
 @Table(name = "bonus_event_log")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BonusEventLog {
     /**
      * Id

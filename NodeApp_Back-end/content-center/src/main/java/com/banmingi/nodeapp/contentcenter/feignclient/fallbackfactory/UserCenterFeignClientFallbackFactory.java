@@ -6,10 +6,7 @@ import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/**
- * @auther 半命i 2020/4/17
- * @description
- */
+
 @Component
 @Slf4j
 public class UserCenterFeignClientFallbackFactory
@@ -18,7 +15,10 @@ public class UserCenterFeignClientFallbackFactory
     public UserCenterFeignClient create(Throwable throwable) {
 
         return new UserCenterFeignClient() {
+
+
             /**
+             *
              * @param id
              * @return
              */
